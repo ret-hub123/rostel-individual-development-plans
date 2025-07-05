@@ -1,0 +1,58 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Men .!.</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link type="text/css" href="{% static 'individual_development_plans/css/base.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+
+<!-- Заголовок -->
+
+<header class="d-flex align-items-center justify-content-between py-3">
+    <ul class="nav">
+        <li class="nav-item">
+            <a href="/" class="btn">Home</a>
+        </li>
+    </ul>
+    <ul class="nav">
+
+        {% if user.is_authenticated %}
+           <h5 class="d-inline-block pe-2"> {{user}} |</h5>
+        <form method="post" action="{% url 'users:logout' %}" class="button-log">
+        {% csrf_token %}
+        <button type="submit" class="button-log">Logout</button>
+    </form>
+        {% else %}
+            <li class="nav-item">
+        <a href="{% url 'users:registration' %}" class="btn d-inline-block pe-2">Registration</a>
+            </li>
+        <li class="nav-item">
+        <a href="{% url 'users:login' %}" class="btn">Login</a>
+        </li>
+        {% endif %}
+
+    </ul>
+
+</header>
+
+
+<main>
+        {% block content %}{% endblock %}
+</main>
+
+<div class = "footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="col-md-4 d-flex align-items-center">&copy; 2025 Система развития навыков сотрудников
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
