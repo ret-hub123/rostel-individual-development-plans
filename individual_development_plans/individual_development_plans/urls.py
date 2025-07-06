@@ -21,6 +21,6 @@ from skilltracker.views import Index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Index.as_view(), name = 'main'),
+    path('', include('skilltracker.urls')),
     path('users/', include('users.urls', namespace='users')),
 ]

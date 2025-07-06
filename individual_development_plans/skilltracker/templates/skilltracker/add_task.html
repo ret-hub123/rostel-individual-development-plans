@@ -1,0 +1,23 @@
+{% extends 'individual_development_plans/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h2 class="title">
+        {{ title }}
+    </h2>
+
+
+    <form action="" method = 'POST' enctype="multipart/form-data">
+    {% csrf_token %}
+        {% for f in form %}
+
+        <p><label class="form-label" for="{{f.if_for_label}}"> {{f.label}}</label> {{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+
+        {% endfor %}
+        <p><button class="mx-auto" type="submit">Опубликовать</button></p>
+    </form>
+
+
+{% endblock %}

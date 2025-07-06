@@ -17,12 +17,15 @@ class Tasks(models.Model):
     status = models.CharField(default='new', choices=status_choice)
     progress = models.IntegerField(default=0, validators=
             [MinValueValidator(0), MaxValueValidator(100)])
-    created_at = models.DateTimeField(auto_now_add=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    employee = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, null=True,
+                                 limit_choices_to={'role': 'employee'})
 
 class Comments(models.Model):
     task = models.ForeignKey(Tasks, on_delete=models.PROTECT, null=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, null=True)
     text = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
+
 

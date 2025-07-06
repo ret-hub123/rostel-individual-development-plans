@@ -17,17 +17,36 @@
 <header class="d-flex align-items-center justify-content-between py-3">
     <ul class="nav">
         <li class="nav-item">
-            <a href="/" class="btn">Home</a>
+            <a href="{% url 'main' %}" class="btn">Home</a>
         </li>
-    </ul>
-    <ul class="nav">
-
         {% if user.is_authenticated %}
+            {% if user.role == 'employee' %}
+            <li class="nav-item">
+            <a href="{% url 'tasks' %}" class="btn">Мои задачи</a>
+            </li>
+        {% else %}
+        <li class="nav-item">
+            <a href="{% url 'employees' %}" class="btn">Сотрудники</a>
+            </li>
+        <li class="nav-item">
+            <a href="{% url 'add-task' %}" class="btn">Добавить задачу</a>
+            </li>
+
+        {% endif %}
+        {% endif %}
+    </ul>
+
+    <ul class="nav align-items-center">
+        {% if user.is_authenticated %}
+
            <h5 class="d-inline-block pe-2"> {{user}} |</h5>
-        <form method="post" action="{% url 'users:logout' %}" class="button-log">
-        {% csrf_token %}
-        <button type="submit" class="button-log">Logout</button>
-    </form>
+        <li class="nav-item">
+        <form method="post" action="{% url 'users:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Logout</button>
+            </form>
+            </li>
+
         {% else %}
             <li class="nav-item">
         <a href="{% url 'users:registration' %}" class="btn d-inline-block pe-2">Registration</a>

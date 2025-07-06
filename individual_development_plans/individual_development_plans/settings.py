@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'skilltracker.apps.SkilltrackerConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+
 ]
 
 MIDDLEWARE = [

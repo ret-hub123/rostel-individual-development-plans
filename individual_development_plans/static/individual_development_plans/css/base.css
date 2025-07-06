@@ -34,6 +34,13 @@ header > ul > li:hover {
   margin-right: 20px;
 }
 
+
+
+.btn-logout:hover {
+  background-color: #39AECF;
+  color: white;
+}
+
 .footer {
     background-color: white;
     padding-left: 10.25rem;
@@ -60,5 +67,5 @@ main{
 .title{
 
     margin-bottom: 50px;
-
 }
+
