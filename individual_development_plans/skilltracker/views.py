@@ -10,3 +10,6 @@ class Index(TemplateView):
     template_name = 'skilltracker/main.html'
     extra_context = {'title': "Главная страница"}
 
+
+
+
