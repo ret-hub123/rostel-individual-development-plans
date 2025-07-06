@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -21,6 +23,12 @@ class Tasks(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     employee = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, null=True,
                                  limit_choices_to={'role': 'employee'})
+
+    def get_absolute_url(self):
+        return reverse('task', kwargs={'task_pk': self.pk})
+
+    def edit_task(self):
+        return reverse('edit-task', kwargs={'pk': self.pk})
 
 class Comments(models.Model):
     task = models.ForeignKey(Tasks, on_delete=models.PROTECT, null=True)
