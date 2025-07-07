@@ -36,15 +36,42 @@ class EmployeeTask(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Tasks, pk = self.kwargs['task_pk'])
 
-class UpdateTask(UpdateView):
+"""class UpdateTask(UpdateView):
     model = Tasks
-    fields = '__all__'
+    fields = ['status', 'progress']
     template_name = 'skilltracker/add_task.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = f'Редактирование задачи {self.kwargs['pk']}'
         return context
+
+class EmployeeTask(DetailView):
+    template_name = 'skilltracker/task.html'
+    context_object_name = 'task'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        return context
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Tasks, pk = self.kwargs['task_pk'])"""
+
+class TaskDetailUpdateView(UpdateView, DetailView):
+    pk_url_kwarg = 'task_pk'
+    template_name = 'skilltracker/task.html'
+    context_object_name = 'task'
+
+    model = Tasks
+    fields = ['status', 'progress']
+    success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        return context
+
 
 
 class Employees(ListView):
@@ -54,7 +81,6 @@ class Employees(ListView):
 
     def get_queryset(self):
         return get_user_model().objects.filter(role = 'employee')
-
 
 
 

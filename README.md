@@ -17,7 +17,7 @@
 ### 1. Инструкция клонирования и настройки веб-приложения
 ```bash
 # 1. Клонировать репозиторий
-git clone https://github.com/ret-hub123/rostel-individual-development-plans/blob/main/README.md
+git clone https://github.com/ret-hub123/rostel-individual-development-plans.git
 cd rostel-individual-development-plans
 
 # 2. Создать и активировать виртуальное окружение
