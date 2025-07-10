@@ -30,7 +30,7 @@ class EmployeeTask(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs["task_pk"]).title}'
         return context
 
     def get_object(self, queryset=None):
@@ -69,7 +69,7 @@ class TaskDetailUpdateView(UpdateView, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs["task_pk"]).title}'
         return context
 
 
