@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView
 
-from skilltracker.forms import AddTaskForm
+from skilltracker.forms import AddTaskForm, AddComment
 from skilltracker.models import Tasks
 
 
@@ -58,7 +58,7 @@ class EmployeeTask(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Tasks, pk = self.kwargs['task_pk'])"""
 
-class TaskDetailUpdateView(UpdateView, DetailView):
+class TaskDetailUpdateView(UpdateView, DetailView, CreateView):
     pk_url_kwarg = 'task_pk'
     template_name = 'skilltracker/task.html'
     context_object_name = 'task'
@@ -66,6 +66,9 @@ class TaskDetailUpdateView(UpdateView, DetailView):
     model = Tasks
     fields = ['status', 'progress']
     success_url = reverse_lazy('tasks')
+
+
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

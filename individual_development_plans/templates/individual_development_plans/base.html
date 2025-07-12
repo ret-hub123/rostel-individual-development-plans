@@ -31,6 +31,9 @@
         <li class="nav-item">
             <a href="{% url 'add-task' %}" class="btn">Добавить задачу</a>
             </li>
+         <li class="nav-item">
+        <a href="{% url 'users:registration' %}" class="btn d-inline-block pe-2">Регистрация сотрудника</a>
+            </li>
 
         {% endif %}
         {% endif %}
@@ -46,11 +49,8 @@
             <button type="submit" class="btn">Logout</button>
             </form>
             </li>
-
         {% else %}
-            <li class="nav-item">
-        <a href="{% url 'users:registration' %}" class="btn d-inline-block pe-2">Registration</a>
-            </li>
+
         <li class="nav-item">
         <a href="{% url 'users:login' %}" class="btn">Login</a>
         </li>

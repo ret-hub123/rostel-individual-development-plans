@@ -1,5 +1,7 @@
 
 
+<!-- Карты пользователя -->
+
 .card-info{
     background-color: #016499;
     width: 100%;
@@ -13,20 +15,79 @@
     border: 2px solid #016499;
 }
 
-.card{
-    min-height: 15rem;
-    max-width: 30rem;
-    border: 2px solid #016499;
-}
 
 .card-text{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .btn-cart{
-
-    border: 2px solid black;
-    max-width: 10rem;
+    max-width: 13rem;
     min-height: 3rem;
+    margin-top: 1rem;
+    background-color: #ff6404;
+    border-radius: 50px;
 
 }
+
+.photo-employee{
+    width: 13rem;
+    height: 12rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border: 1px dashed black;
+
+}
+
+
+.card {
+    background-color: #efefef;
+    min-height: 26rem;
+    max-width: 25rem;
+    align-items: center;
+
+}
+
+
+
+
+.add-task{
+    background-color: #efefef;
+    padding: 2rem;
+    max-width: 30rem;
+    min-width: 25rem;
+
+}
+
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.form-input-deadline,
+.form-input-employee,
+.form-input,
+.form-input-area{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-add-user{
+    width: 15rem;
+    min-height: 3rem;
+    margin-top: 1rem;
+    background-color: #ff6404;
+    border-radius: 50px;
+}
+
+.title-reg{
+    margin-bottom: 3rem;
+}
+
+

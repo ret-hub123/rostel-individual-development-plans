@@ -1,11 +1,39 @@
 from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.auth import get_user_model
 
-from .models import Tasks
+from users.models import User
+from .models import Tasks, Comments
+
 
 class AddTaskForm(forms.ModelForm):
+    employee = forms.ModelChoiceField(
+        queryset = get_user_model().objects.filter(role = 'employee'),
+        label="Выберите сотрудника",
+        widget=forms.Select(attrs={'class': 'form-input-employee'}),
+    )
+
+    deadline = forms.DateField(
+        label='Срок выполнения',
+        widget=forms.DateInput(attrs={'class': 'form-input-deadline'}),
+    )
 
     class Meta:
         model = Tasks
-        fields = '__all__'
+        fields = ['title', 'description', 'deadline', 'employee']
 
+        labels = {
+            'employee': 'Выберите сотрудника'
+        }
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-input'}),
+            'description': forms.Textarea(attrs={'class': 'form-input-area'})
+        }
+
+
+
+class AddComment(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = '__all__'
