@@ -23,6 +23,8 @@ class AddTaskForm(forms.ModelForm):
         fields = ['title', 'description', 'deadline', 'employee']
 
         labels = {
+            'title': 'Заголовок',
+            'description': 'Описание',
             'employee': 'Выберите сотрудника'
         }
 

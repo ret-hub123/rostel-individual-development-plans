@@ -1,9 +1,9 @@
 
 
-<!-- Карты пользователя -->
+
 
 .card-info{
-    background-color: #016499;
+    background-color: #ff6404;
     width: 100%;
     margin-bottom: 1rem;
 
@@ -30,10 +30,9 @@
 }
 
 .photo-employee{
-    width: 13rem;
-    height: 12rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    width: 12rem;
+    height: 11rem;
+    margin: 1rem;
     border: 1px dashed black;
 
 }
@@ -41,8 +40,10 @@
 
 .card {
     background-color: #efefef;
-    min-height: 26rem;
-    max-width: 25rem;
+    min-height: 25rem;
+
+    min-width: 12rem;
+    max-width: 17rem;
     align-items: center;
 
 }
@@ -81,13 +82,42 @@
 .button-add-user{
     width: 15rem;
     min-height: 3rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     background-color: #ff6404;
     border-radius: 50px;
 }
 
 .title-reg{
+    margin-top: 1rem;
     margin-bottom: 3rem;
 }
 
 
+
+.card-task {
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color:#efefef;
+    max-width: 25rem;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+
+.btn-task {
+    border: 2px solid white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid white;
+    background-color: white;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+.btn-task:hover {
+    border: 2px solid white;
+    background-color:#ff6404;
+    color: white;
+  }

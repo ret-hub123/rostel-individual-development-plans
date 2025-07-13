@@ -9,9 +9,9 @@
     </h2>
 
      <div class="container">
-  <div class="row g-2">
+  <div class="row">
     {% for employee in employees %}
-      <div class="col-md-4 mb-5 card-wrapper">
+      <div class="col-4 mb-4 card-wrapper">
         <div class="card fixed-card">
 
             {% if employee.photo_profile %}
@@ -22,7 +22,7 @@
             <h5 class="card-text">{{ employee.first_name }} {{ employee.last_name }}</h5>
             <p class="card-text"> <b>username: </b>{{ employee.username }}</p>
 
-            <a href="{{post.get_absolute_url}}" class="btn btn-cart">Посмотреть задачи сотрудника</a>
+            <a href="{{employee.get_tasks_employee}}" class="btn btn-cart">Посмотреть задачи сотрудника</a>
         </div>
       </div>
     {% endfor %}

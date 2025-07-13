@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView
 
 from skilltracker.forms import AddTaskForm, AddComment
-from skilltracker.models import Tasks
+from skilltracker.models import Tasks, Comments
 
 
 # Create your views here.
@@ -22,7 +22,13 @@ class EmployeeTasks(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        return Tasks.objects.filter(employee = self.request.user)
+
+        if self.request.user.role == 'employee':
+            current_employee = self.request.user.id
+        else:
+            current_employee = self.kwargs.get('employee_id')
+
+        return Tasks.objects.filter(employee_id = current_employee)
 
 class EmployeeTask(DetailView):
     template_name = 'skilltracker/task.html'
@@ -68,11 +74,12 @@ class TaskDetailUpdateView(UpdateView, DetailView, CreateView):
     success_url = reverse_lazy('tasks')
 
 
-    
 
     def get_context_data(self, **kwargs):
+        print(self.request.user.id)
         context = super().get_context_data(**kwargs)
-        context['title'] = f'Задача {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        context['title'] = f'Задача # {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
+        context['comments'] = Comments.objects.filter(task_id = self.kwargs.get('task_pk'))
         return context
 
 

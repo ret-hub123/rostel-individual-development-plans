@@ -9,12 +9,12 @@
     </h2>
 
   <div class="container">
-  <div class="row g-4">
+  <div class="row">
     {% for task in tasks %}
 
-      <div class="col-md-12">
-        <div class="card bg-white h-200">
-          <div class="card-info d-flex align-items-center justify-content-between p-3">
+      <div class="col-4 col-md-8  mx-auto">
+        <div class="card-task text-center">
+          <div class="card-info  align-items-center justify-content-between p-3">
             <h6 class="mb-0">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
             <h6 class="mb-0">Прогресс: {{ task.progress }}%</h6>
           </div>
@@ -22,11 +22,13 @@
           <div class="card-body">
             <h5 class="card-title">{{ task.title }}</h5>
             <p class="card-text">{{ task.description }}</p>
-            <a href="{{task.get_absolute_url}}" style="background-color:#016499" class="btn">Перейти к задаче</a>
+            <a href="{{task.get_absolute_url}}" class="btn btn-task">Перейти к задаче</a>
           </div>
         </div>
       </div>
     {% endfor %}
+
+
   </div>
 </div>
 

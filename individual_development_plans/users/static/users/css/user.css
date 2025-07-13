@@ -30,9 +30,9 @@
 }
 
 .button-add-user{
+    margin-top: 2rem;
     width: 15rem;
     min-height: 3rem;
-    margin-top: 1rem;
     background-color: #ff6404;
     border-radius: 50px;
 }

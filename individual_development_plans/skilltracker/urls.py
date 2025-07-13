@@ -8,6 +8,7 @@ urlpatterns = [
     # Руководитель
     path('employees/', Employees.as_view(), name = 'employees'),
     path('add-task/', AddTask.as_view(), name = 'add-task'),
+    path('employee/<int:employee_id>/tasks/', EmployeeTasks.as_view(), name = 'employee-tasks'),
 
     # Сотрудник
     path('tasks/', EmployeeTasks.as_view(), name = 'tasks'),

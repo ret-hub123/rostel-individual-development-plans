@@ -4,12 +4,16 @@
 {% block content %}
     <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
 
-    <h2 class="title">
+
+
+    <div class="container">
+  <div class="row">
+
+      <div class="col-6">
+          <h2 class="title">
         {{ title }}
     </h2>
-
-      <div class="col-md-12">
-        <div class="card bg-white h-100">
+        <div class="card-task">
           <div class="card-info d-flex align-items-center justify-content-between p-3">
             <h6 class="mb-0">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
           </div>
@@ -20,10 +24,34 @@
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button style="background-color:#016499" type="submit"  class="btn">Сохранить изменения</button>
+                <button style="background-color:#ff6404" type="submit"  class="btn">Сохранить изменения</button>
             </form>
           </div>
         </div>
+      </div>
+
+
+
+       <div class="col-6">
+           <h2 class="title">
+        Комментарии
+    </h2>
+           {% for comment in comments %}
+        <div class="card-task fixed-card bg-white">
+          <div class="card-info d-flex align-items-center justify-content-between p-3">
+            <h6 class="mb-0">Автор: {{ comment.user }}</h6>
+            <h6 class="mb-0">Дата: {{ comment.created_at|date:"Y-m-d" }}</h6>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">{{ comment.text }}</h5>
+
+          </div>
+        </div>
+           {% endfor %}
+      </div>
+
+      </div>
       </div>
 
 
