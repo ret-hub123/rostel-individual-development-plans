@@ -39,7 +39,7 @@
     <ul class="nav align-items-center">
         {% if user.is_authenticated %}
 
-           <h5 class="d-inline-block pe-2"> {{user}} |</h5>
+           <h5 class="d-inline-block pe-2" style="color:white"> {{user}} |</h5>
         <li class="nav-item">
         <form method="post" action="{% url 'users:logout' %}">
             {% csrf_token %}
