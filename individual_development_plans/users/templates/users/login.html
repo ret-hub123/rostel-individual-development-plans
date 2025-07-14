@@ -2,17 +2,29 @@
 {% load static %}
 
 {% block content %}
+  <link type="text/css" href="{% static 'users/css/user.css' %}" rel="stylesheet" />
 
-    <h2 class="title">
+
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+  <form class="add-user text-center" action="" method = 'POST' enctype="multipart/form-data">
+    <h2 class="title-reg text-center">
         {{ title }}
     </h2>
+      {% csrf_token %}
+        {% for f in form %}
 
-    <form method="POST" enctype="multipart/form-data">
-         {% csrf_token %}
-        {{ form.as_p}}
-        <p><button type="submit">Войти</button></p>
+        <p><label class="form-label" for="{{f.if_for_label}}"> {{f.label}}</label> {{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+
+        {% endfor %}
+        <p><button class="button-add-user" type="submit">Войти</button></p>
     </form>
-
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}

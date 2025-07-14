@@ -1,0 +1,42 @@
+
+.add-user{
+    background-color: #efefef;
+    padding: 2rem;
+    max-width: 30rem;
+    min-width: 25rem;
+
+}
+
+
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+
+.form-input,
+.form-input-role,
+.form-input-pass,
+.form-input-photo{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-add-user{
+    margin-top: 2rem;
+    width: 15rem;
+    min-height: 3rem;
+    background-color: #ff6404;
+    border-radius: 50px;
+}
+
+.title-reg{
+    margin-bottom: 3rem;
+}

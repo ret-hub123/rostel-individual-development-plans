@@ -1,6 +1,6 @@
 
 body {
-    background-color: white;
+    background-color: #39AECF;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -10,8 +10,7 @@ body {
 
 
 header{
-
-    background-color: black;
+    background-color: white;
     margin-bottom: 50px;
     padding-left: 10.25rem;
     padding-right: 10.25rem;
@@ -19,20 +18,19 @@ header{
 
 
 header > ul > li {
-  background-color: white;
-
+  border: 2px solid #39AECF;
   padding: 4px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin-right: 20px;
 }
 
 
 header > ul > li:hover {
-
-  background-color: #FF6404;
+  border: 2px solid white;
+  background-color: #39AECF;
   color: white;
   padding: 4px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin-right: 20px;
 }
 
@@ -44,7 +42,7 @@ header > ul > li:hover {
 }
 
 .footer {
-    background-color: #EFEFEF;
+    background-color: white;
     padding-left: 10.25rem;
     padding-right: 10.25rem;
     position: fixed;
@@ -67,9 +65,7 @@ main{
 }
 
 .title{
-    font-size: 72px;
-    font-style: italic;
+
     margin-bottom: 50px;
 }
-
 

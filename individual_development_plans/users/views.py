@@ -17,7 +17,7 @@ class LoginUser(LoginView):
 class UsersCreate(CreateView):
     form_class = RegisterUserForm
     template_name = 'users/registration.html'
-    extra_context = {'title': "Регистрация"}
+    extra_context = {'title': "Регистрация сотрдника"}
     success_url = reverse_lazy('main')
 
 

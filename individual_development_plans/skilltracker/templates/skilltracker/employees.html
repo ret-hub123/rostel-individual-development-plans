@@ -2,15 +2,32 @@
 {% load static %}
 
 {% block content %}
+  <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
 
     <h2 class="title">
         {{ title }}
     </h2>
 
+     <div class="container">
+  <div class="row">
     {% for employee in employees %}
-       <p> {{ employee.username }}</p>
+      <div class="col-4 mb-4 card-wrapper">
+        <div class="card fixed-card">
 
+            {% if employee.photo_profile %}
+             <img class="photo-employee" src="{{ employee.photo_profile.url }}" >
+            {% else %}
+            <img class="photo-employee" src="{% static 'skilltracker/image/Bez_foto_2 (1).jpg' %}" >
+            {% endif %}
+            <h5 class="card-text">{{ employee.first_name }} {{ employee.last_name }}</h5>
+            <p class="card-text"> <b>username: </b>{{ employee.username }}</p>
+
+            <a href="{{employee.get_tasks_employee}}" class="btn btn-cart">Посмотреть задачи сотрудника</a>
+        </div>
+      </div>
     {% endfor %}
 
+  </div>
+</div>
 
 {% endblock %}
