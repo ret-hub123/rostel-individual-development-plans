@@ -2,10 +2,10 @@ from http.client import HTTPResponse
 
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView
 
-from skilltracker.forms import AddTaskForm, AddComment
+from skilltracker.forms import AddTaskForm,  TaskUpdateForm, AddCommentForm
 from skilltracker.models import Tasks, Comments
 
 
@@ -22,7 +22,6 @@ class EmployeeTasks(ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-
         if self.request.user.role == 'employee':
             current_employee = self.request.user.id
         else:
@@ -64,25 +63,39 @@ class EmployeeTask(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Tasks, pk = self.kwargs['task_pk'])"""
 
-class TaskDetailUpdateView(UpdateView, DetailView, CreateView):
+class TaskDetailUpdateView(DetailView, UpdateView):
     pk_url_kwarg = 'task_pk'
     template_name = 'skilltracker/task.html'
     context_object_name = 'task'
 
     model = Tasks
-    fields = ['status', 'progress']
+    form_class = TaskUpdateForm
     success_url = reverse_lazy('tasks')
 
 
 
     def get_context_data(self, **kwargs):
-        print(self.request.user.id)
+
         context = super().get_context_data(**kwargs)
         context['title'] = f'Задача # {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
         context['comments'] = Comments.objects.filter(task_id = self.kwargs.get('task_pk'))
+        context['task_form'] = context['form']
         return context
 
 
+class AddComment(CreateView):
+    form_class = AddCommentForm
+    template_name = 'skilltracker/add_comment.html'
+    extra_context = {'title': 'Форма добавления комментария'}
+
+    def get_success_url(self):
+        return reverse('task', kwargs={'task_pk': self.kwargs['task_pk']})
+
+
+    def form_valid(self, form):
+        form.instance.task_id = self.kwargs['task_pk']
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class Employees(ListView):
     template_name = 'skilltracker/employees.html'
@@ -91,7 +104,6 @@ class Employees(ListView):
 
     def get_queryset(self):
         return get_user_model().objects.filter(role = 'employee')
-
 
 
 

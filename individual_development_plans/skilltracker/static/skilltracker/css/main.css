@@ -1,11 +1,10 @@
 
 
-
-
 .card-info{
     background-color: #ff6404;
-    width: 100%;
-    margin-bottom: 1rem;
+    width: calc(100% + 4rem); /* Растягиваем на 2rem с каждой стороны */
+    margin: -2rem -2rem 1rem -2rem; /* Отрицательные отступы для выхода за границы */
+    padding: 1rem 2rem;
 
 }
 
@@ -41,14 +40,11 @@
 .card {
     background-color: #efefef;
     min-height: 25rem;
-
     min-width: 12rem;
     max-width: 17rem;
     align-items: center;
 
 }
-
-
 
 
 .add-task{
@@ -102,6 +98,8 @@
     max-width: 25rem;
     margin: 0 auto;
     margin-bottom: 3rem;
+    padding: 2rem;
+
   }
 
 .btn-task {
@@ -112,7 +110,6 @@
     border-radius: 4px;
     border: 1px solid white;
     background-color: white;
-    margin-bottom: 1rem;
     margin-top: 2rem;
   }
 
@@ -120,4 +117,44 @@
     border: 2px solid white;
     background-color:#ff6404;
     color: white;
-  }
+}
+
+
+.form-input,
+.form-input-role,
+.form-input-pass,
+.form-input-photo{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+
+
+}
+
+.card-title{
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text{
+    margin-bottom: 2rem;
+}
+
+.btn-go-comment{
+    background-color: #ff6404;
+    height: 3rem;
+    width: 14rem;
+    color: black;
+
+}

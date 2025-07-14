@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from skilltracker.views import Index, EmployeeTasks, AddTask, Employees, EmployeeTask,TaskDetailUpdateView
+
+
+from skilltracker.views import Index, EmployeeTasks, AddTask, Employees, EmployeeTask, TaskDetailUpdateView, AddComment
 
 urlpatterns = [
     path('', Index.as_view(), name = 'main'),
@@ -13,6 +15,7 @@ urlpatterns = [
     # Сотрудник
     path('tasks/', EmployeeTasks.as_view(), name = 'tasks'),
     path('task/<int:task_pk>', TaskDetailUpdateView.as_view(), name = 'task'),
+    path('task/<int:task_pk>/add-comment', AddComment.as_view(), name = 'add-comment'),
 
 
 ]

@@ -34,8 +34,24 @@ class AddTaskForm(forms.ModelForm):
         }
 
 
+class TaskUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Tasks
+        fields = ['status', 'progress']
 
-class AddComment(forms.ModelForm):
+        widgets = {
+        'status': forms.Select(attrs={'class': 'form-input'}),
+        'progress': forms.TextInput(attrs={'class': 'form-input'})
+        }
+
+class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        fields = '__all__'
+        fields = ['text']
+
+        widgets = {
+            'text': forms.TextInput(attrs={'class': 'form-input'})
+        }
+
+
+

@@ -30,10 +30,20 @@ class Tasks(models.Model):
     def edit_task(self):
         return reverse('edit-task', kwargs={'pk': self.pk})
 
+    def add_comment(self):
+        return reverse('add-comment', kwargs={'task_pk': self.id})
+
+
+
+
+
 class Comments(models.Model):
     task = models.ForeignKey(Tasks, on_delete=models.PROTECT, null=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, null=True)
     text = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
 
