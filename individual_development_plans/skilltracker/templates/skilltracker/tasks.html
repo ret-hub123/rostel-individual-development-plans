@@ -4,9 +4,9 @@
 {% block content %}
     <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
 
-    <h2 class="title">
+    <h1 class="title">
         {{ title }}
-    </h2>
+    </h1>
 
   <div class="container">
   <div class="row g-4">
@@ -22,7 +22,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ task.title }}</h5>
             <p class="card-text">{{ task.description }}</p>
-            <a href="{{task.get_absolute_url}}" style="background-color:#016499" class="btn">Перейти к задаче</a>
+            <a href="{{task.get_absolute_url}}" style="background-color:#FF6404" class="btn">Перейти к задаче</a>
           </div>
         </div>
       </div>

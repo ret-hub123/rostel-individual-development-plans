@@ -1,26 +1,30 @@
 
 
 .card-info{
-    background-color: #016499;
+    background-color:black;
     width: 100%;
     margin-bottom: 1rem;
-
+    color: white;
 }
 
 .current{
     min-height: 25rem;
     max-width: 30rem;
-    border: 2px solid #016499;
+    border: 2px solid #FF6404;
+
 }
+
 
 .card{
     min-height: 15rem;
     max-width: 30rem;
-    border: 2px solid #016499;
+    background-color: #FF6404;
 }
 
 .card-text{
+
     margin-bottom: 2rem;
+
 }
 
 .btn-cart{
@@ -28,5 +32,9 @@
     border: 2px solid black;
     max-width: 10rem;
     min-height: 3rem;
+
+}
+
+.btn{
 
 }
