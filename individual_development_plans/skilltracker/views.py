@@ -1,19 +1,35 @@
 from http.client import HTTPResponse
 
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView
+from django.db.models import Case, When, Value, F
+from datetime import date, timedelta
 
 from skilltracker.forms import AddTaskForm,  TaskUpdateForm, AddCommentForm
 from skilltracker.models import Tasks, Comments
+from skilltracker.templatetags.custom_filters import days_left
+from datetime import date, timedelta
 
 
 # Create your views here.
 
-class Index(TemplateView):
+class Index(ListView):
     template_name = 'skilltracker/main.html'
     extra_context = {'title': "Главная страница"}
+    context_object_name = 'warning_tasks'
+
+    def get_queryset(self):
+        today = date.today()
+        return Tasks.objects.annotate(
+            actual=Case(
+                When(deadline__lt=today, then=Value("death")),
+                When(deadline__lte=today + timedelta(days=3), then=Value("warning")),
+                default=Value("good"),
+            )
+        ).filter( Q(actual ='death') | Q(actual ='warning'), employee = self.request.user)
 
 
 class EmployeeTasks(ListView):

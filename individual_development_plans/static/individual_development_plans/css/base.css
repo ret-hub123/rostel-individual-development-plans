@@ -30,7 +30,7 @@ header > ul > li {
 
 header > ul > li:hover {
   border: 2px solid white;
-  background-color: #ff6404;
+  background-color: #ff6404 ;
   color: white;
   padding: 4px;
   border-radius: 10px;

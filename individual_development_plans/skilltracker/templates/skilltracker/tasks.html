@@ -1,5 +1,6 @@
 {% extends 'individual_development_plans/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
     <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
@@ -8,16 +9,30 @@
         {{ title }}
     </h2>
 
+
   <div class="container">
   <div class="row">
+
     {% for task in tasks %}
+
 
       <div class="col-4 col-md-8 mx-auto">
         <div class="card-task text-center">
-          <div class="card-info  align-items-center justify-content-between p-3">
-            <h6 class="mb-0">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
-            <h6 class="mb-0">Прогресс: {{ task.progress }}%</h6>
-          </div>
+
+          {% with status=task.deadline|days_left %}
+          <div class="card-info align-items-center justify-content-between p-3">
+    <div class="deadline-wrapper" style="background-color:
+    {% if status == 'death'%} red
+    {% elif status == 'warning'%} yellow
+    {% else %} green
+    {% endif %}">
+        <h6 class="mb-0">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
+    </div>
+    <h6 class="mb-0">Прогресс: {{ task.progress }}%</h6>
+</div>
+          {% endwith %}
+
+
 
           <div class="card-body">
             <h5 class="card-title">{{ task.title }}</h5>
