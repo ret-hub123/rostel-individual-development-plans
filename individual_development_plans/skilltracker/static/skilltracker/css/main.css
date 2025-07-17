@@ -171,3 +171,22 @@
     background-color: #ff6404;
     color: white;
 }
+
+.warning-mess{
+    color: red;
+    margin-top: 10rem;
+
+}
+
+.deadline-wrapper{
+    padding: 8px 16px;
+    border-radius: 16px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-wrapper{
+    margin-bottom: 5rem;
+
+}

@@ -1,5 +1,6 @@
 {% extends 'individual_development_plans/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
      <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
@@ -12,5 +13,63 @@
 <h2> Сначала пройдите авторизацию -> <a href="{% url 'users:login' %}">здесь</a> </h2>
          {% endif %}
 
+        {% if not user.is_authenticated %}
+<h2> Сначала пройдите авторизацию -> <a href="{% url 'users:login' %}">здесь</a> </h2>
+        {% else %}
+            <h2 class="title">
+                Добро пожаловать! <b>{{user.first_name}} {{user.last_name }}</b>
+            </h2>
 
-{% endblock %}html>
+        {% if user.role == 'employee' %}
+            <div class="title-wrapper" style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+    <h3 style=" display: inline;">
+        <span class="warning-mess" style="color: red; font-weight: bold;">Внимание!</span>
+        У вас подходит DeathLine по следующим задачам -
+    </h3>
+    <a href="{{ 'tasks' }}" class="btn btn-task" style="padding: 2px 12px; background-color: #ff6404;">
+        Перейти к задачам
+    </a>
+</div>
+
+  <div class="container-fluid">
+  <div class="row flex-nowrap overflow-auto">
+
+    {% for warning_task in warning_tasks|slice:":2" %}
+
+
+      <div class="col-md-4 mb-4">
+        <div class="card-task text-center">
+
+         {% with status=warning_task.deadline|days_left %}
+<div class="card-info align-items-center justify-content-between p-3">
+    <div class="deadline-wrapper" style="background-color:
+        {% if status == 'death' %}red
+        {% elif status == 'warning' %}yellow
+        {% else %}green{% endif %};">
+        <h6 class="mb-0">Дедлайн: {{ warning_task.deadline|date:"Y-m-d" }}</h6>
+    </div>
+    <h6 class="mb-0">Прогресс: {{ warning_task.progress }}%</h6>
+</div>
+{% endwith %}
+
+
+          <div class="card-body">
+            <h5 class="card-title">{{ warning_task.title }}</h5>
+            <p class="card-text">{{ warning_task.description }}</p>
+            <a href="{{task.get_absolute_url}}" class="btn btn-task">Перейти к задаче</a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+        </div>
+  </div>
+
+
+        {% endif %}
+        {% endif %}
+
+
+
+{% endblock %}
