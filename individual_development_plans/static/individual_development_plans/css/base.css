@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')
 body {
     background-color: white;
     display: flex;
@@ -17,36 +17,38 @@ header{
     padding-right: 10.25rem;
 }
 
+.nav-item2{
+  background-color: #ff6404;
+  color: black;
+  padding: 4px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
 
 header > ul > li {
-  border: 2px solid white;
+
   background-color: white;
   color: black;
   padding: 4px;
-  border-radius: 10px;
+  border-radius: 50px;
   margin-right: 20px;
+  background-color: white;
 }
 
 
 header > ul > li:hover {
-  border: 2px solid white;
+
   background-color: #ff6404;
   color: white;
   padding: 4px;
-  border-radius: 10px;
   margin-right: 20px;
 }
 
 
 
-.btn-logout:hover {
-  background-color: #39AECF;
-  color: white;
-}
-
 .footer {
-    background-color: black;
-    color:white;
+    background-color: #EFEFEF;
+    color: #CDCDCD;
     padding-left: 10.25rem;
     padding-right: 10.25rem;
     position: fixed;
@@ -69,7 +71,27 @@ main{
 }
 
 .title{
-
+    font-size: 80px;
+    font-weight: 500;
     margin-bottom: 50px;
+    position: relative;
+    left: -160px;
+    top: -30px;
 }
 
+.title_task{
+    font-size: 80px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    position: relative;
+    left: -250px;
+    top: -30px;
+
+}
+
+.title_comments{
+    font-size: 65px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    text-align: center;
+}

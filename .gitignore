@@ -1,0 +1,11 @@
+# Исключить папку виртуального окружения
+djvenv/
+# Файлы кеша Python
+__pycache__/
+*.py[cod]
+*$py.class
+# Кеш pytest
+.pytest_cache/
+.coverage
+
+.idea/
