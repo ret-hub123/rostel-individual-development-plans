@@ -60,8 +60,3 @@ class RegisterUserForm(UserCreationForm):
         }
 
 
-    def clean_email(self, **kwargs):
-        email = self.cleaned_data.get('email')
-        if get_user_model().objects.filter(email = email).exists():
-            return forms.ValidationError('Такой E-mail уже исподьзуется')
-        return email

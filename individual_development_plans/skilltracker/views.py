@@ -1,6 +1,8 @@
 from http.client import HTTPResponse
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -20,17 +22,20 @@ class Index(ListView):
     template_name = 'skilltracker/main.html'
     extra_context = {'title': "Главная страница"}
     context_object_name = 'warning_tasks'
+    login_url = reverse_lazy('login')
 
     def get_queryset(self):
         today = date.today()
-        return Tasks.objects.annotate(
-            actual=Case(
-                When(deadline__lt=today, then=Value("death")),
-                When(deadline__lte=today + timedelta(days=3), then=Value("warning")),
-                default=Value("good"),
-            )
-        ).filter( Q(actual ='death') | Q(actual ='warning'), employee = self.request.user)
-
+        if self.request.user.is_authenticated:
+            return Tasks.objects.annotate(
+                actual=Case(
+                    When(deadline__lt=today, then=Value("death")),
+                    When(deadline__lte=today + timedelta(days=3), then=Value("warning")),
+                    default=Value("good"),
+                )
+            ).filter( Q(actual ='death') | Q(actual ='warning'), employee = self.request.user)
+        else:
+            return Tasks.objects.none()
 
 class EmployeeTasks(ListView):
     template_name = 'skilltracker/tasks.html'
@@ -88,16 +93,20 @@ class TaskDetailUpdateView(DetailView, UpdateView):
     form_class = TaskUpdateForm
     success_url = reverse_lazy('tasks')
 
-
-
     def get_context_data(self, **kwargs):
 
-        context = super().get_context_data(**kwargs)
-        context['title'] = f'Задача # {get_object_or_404(Tasks, pk = self.kwargs['task_pk']).title}'
-        context['comments'] = Comments.objects.filter(task_id = self.kwargs.get('task_pk'))
-        context['task_form'] = context['form']
-        return context
+        task = get_object_or_404(Tasks, pk=self.kwargs['task_pk'])
+        if self.request.user.role != 'director' and self.request.user.id != task.employee_id:
+            raise PermissionDenied('У вас нет доступа к этой задаче')
 
+
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'title': f'Задача # {task.title}',
+            'comments': Comments.objects.filter(task_id=self.kwargs['task_pk']),
+            'task_form': context.get('form')
+        })
+        return context
 
 class AddComment(CreateView):
     form_class = AddCommentForm
@@ -123,11 +132,12 @@ class Employees(ListView):
 
 
 
-class AddTask(CreateView):
+class AddTask(PermissionRequiredMixin, CreateView):
     form_class = AddTaskForm
     template_name = 'skilltracker/add_task.html'
     extra_context = {'title': "Форма добавления задачи"}
     success_url = reverse_lazy('main')
+    permission_required = 'skilltracker.add_task'
 
 
 
