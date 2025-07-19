@@ -1,7 +1,7 @@
 
 
 .card-info{
-    background-color: #ff6404;
+    background-color: black;
     width: calc(100% + 4rem); /* Растягиваем на 2rem с каждой стороны */
     margin: -2rem -2rem 1rem -2rem; /* Отрицательные отступы для выхода за границы */
     padding: 1rem 2rem;
@@ -25,7 +25,12 @@
     margin-top: 1rem;
     background-color: #ff6404;
     border-radius: 50px;
+    margin: 1rem;
+}
 
+.btn-cart:hover{
+    background-color: #ff6404;
+    color: white;
 }
 
 .photo-employee{
@@ -43,16 +48,18 @@
     min-width: 12rem;
     max-width: 17rem;
     align-items: center;
-
+    border-radius: 35px;
+    padding: 10px;
 }
 
 
 .add-task{
     background-color: #efefef;
-    padding: 2rem;
+    padding: 4rem;
     max-width: 30rem;
     min-width: 25rem;
-
+    border-radius: 50px;
+    align-items: center;
 }
 
 
@@ -62,6 +69,7 @@
     margin-bottom: 0.5rem;
     font-weight: bold;
     min-width: 100px;
+    border-radius: 50px;
 }
 
 .form-input-deadline,
@@ -76,48 +84,47 @@
 }
 
 .button-add-user{
+    margin-top: 3rem;
     width: 15rem;
     min-height: 3rem;
-    margin-top: 2rem;
     background-color: #ff6404;
     border-radius: 50px;
+    border: 1px solid #ddd;
+}
+.button-add-user:hover{
+    color: white;
 }
 
 .title-reg{
     margin-top: 1rem;
     margin-bottom: 3rem;
+    border-radius: 50px;
 }
 
 
 
 .card-task {
-    border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 30px;
     overflow: hidden;
     background-color:#efefef;
     max-width: 25rem;
     margin: 0 auto;
     margin-bottom: 3rem;
     padding: 2rem;
-
   }
 
 .btn-task {
-    border: 2px solid white;
     color: black;
-    border: none;
     padding: 8px 20px;
-    border-radius: 4px;
+    border-radius: 50px;
     border: 1px solid white;
     background-color: white;
     margin-top: 2rem;
   }
-
 .btn-task:hover {
-    border: 2px solid white;
-    background-color:#ff6404;
     color: white;
-}
+    background-color: #ff6404;
+  }
 
 
 .form-input,
@@ -138,8 +145,6 @@
     margin-bottom: 0.5rem;
     font-weight: bold;
     min-width: 100px;
-
-
 }
 
 .card-title{
@@ -149,6 +154,7 @@
 
 .card-text{
     margin-bottom: 2rem;
+
 }
 
 .btn-go-comment{
@@ -156,7 +162,12 @@
     height: 3rem;
     width: 14rem;
     color: black;
+    border-radius: 50px;
+}
 
+.btn-go-comment:hover{
+    background-color: #ff6404;
+    color: white;
 }
 
 .warning-mess{

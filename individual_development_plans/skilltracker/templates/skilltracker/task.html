@@ -8,14 +8,14 @@
         <div class="row">
             <!-- Левая колонка - Информация о задаче -->
             <div class="col-6">
-                <h2 class="title">{{ title }}</h2>
+                <h2 class="title_task">{{ title }}</h2>
                 <div class="card-task text-center">
                     <div class="card-info d-flex align-items-center justify-content-between p-3">
-                        <h6 class="mb-0">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
+                        <h6 class="mb-0" style="color: #ffffff">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ task.title }}</h5>
+                        <h5 class="card-title" >{{ task.title }}</h5>
                         <p class="card-text">{{ task.description }}</p>
 
                         <form class="add-user text-center" action="?form_type=task_form" method="POST" enctype="multipart/form-data">
@@ -41,13 +41,13 @@
 
             <!-- Правая колонка - Комментарии -->
             <div class="col-6">
-                <h2 class="title">Комментарии</h2>
+                <h2 class="title_comments">Комментарии</h2>
                 {% if comments %}
                     {% for comment in comments %}
                         <div class="card-task fixed-card text-center">
                             <div class="card-info d-flex align-items-center justify-content-between p-3">
-                                <h6 class="mb-0">Автор: {{ comment.user }}</h6>
-                                <h6 class="mb-0">Дата: {{ comment.created_at|date:"Y-m-d" }}</h6>
+                                <h6 class="mb-0" style="color: #ffffff">Автор: {{ comment.user }}</h6>
+                                <h6 class="mb-0" style="color: #ffffff">Дата: {{ comment.created_at|date:"Y-m-d" }}</h6>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-text-comment">{{ comment.text }}</h5>

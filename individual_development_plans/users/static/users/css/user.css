@@ -1,10 +1,11 @@
 
 .add-user{
     background-color: #efefef;
-    padding: 2rem;
+    padding: 4rem;
     max-width: 30rem;
     min-width: 25rem;
-
+    border-radius: 50px;
+    align-items: center;
 }
 
 
@@ -30,13 +31,17 @@
 }
 
 .button-add-user{
-    margin-top: 2rem;
+    margin-top: 3rem;
     width: 15rem;
     min-height: 3rem;
     background-color: #ff6404;
     border-radius: 50px;
+    border: 1px solid #ddd;
 }
 
+.button-add-user:hover{
+    color: white;
+}
 .title-reg{
     margin-bottom: 3rem;
 }
