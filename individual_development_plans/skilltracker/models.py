@@ -9,8 +9,13 @@ from django.urls import reverse
 class DataMixin:
     status_choice = [
         ('new', 'Новая'),
+        ('In proccess', 'В обработке'),
         ('in_progress', 'В работе'),
-        ('completed', 'Завершена')
+        ('on_approval', 'На согласовании'),
+        ('on_correction', 'На доработке'),
+        ('postponed', 'Отложена'),
+        ('completed', 'Завершена'),
+
     ]
 
     @classmethod
@@ -39,7 +44,11 @@ class Tasks(models.Model, DataMixin):
     def add_comment(self):
         return reverse('add-comment', kwargs={'task_pk': self.id})
 
-
+    def exit_position(self):
+        self.status = 'Завершена'
+        self.progress = 100
+        self.save()
+        return reverse('main')
 
 
 
@@ -53,6 +62,4 @@ class Comments(models.Model, DataMixin):
     class Meta:
         ordering = ["-created_at"]
 
-    def exit_position(self):
-        self.progress = 'Завершена'
 

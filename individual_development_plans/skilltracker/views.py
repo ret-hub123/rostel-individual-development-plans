@@ -91,7 +91,7 @@ class TaskDetailUpdateView(DetailView, UpdateView):
 
     model = Tasks
     form_class = TaskUpdateForm
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('main')
 
     def get_context_data(self, **kwargs):
 
