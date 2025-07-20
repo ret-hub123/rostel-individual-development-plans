@@ -6,9 +6,9 @@
 
     <div class="container">
         <div class="row">
-            <!-- Левая колонка - Информация о задаче -->
+
             <div class="col-6">
-                <h2 class="title_task">{{ title }}</h2>
+                <h1 class="title">{{ title }}</h1>
                 <div class="card-task text-center">
                     <div class="card-info d-flex align-items-center justify-content-between p-3">
                         <h6 class="mb-0" style="color: #ffffff">Дедлайн: {{ task.deadline|date:"Y-m-d" }}</h6>
@@ -26,6 +26,7 @@
                                     {{ f }}
                                 </p>
                                 <div class="form-error">{{ f.errors }}</div>
+
                             {% endfor %}
                             <button class="btn btn-task" type="submit">Изменить</button>
                         </form>
@@ -34,14 +35,14 @@
 
                 <div class="text-center mt-3">
                     <a style="text-decoration: none; color:black;" href="{{ task.add_comment }}">
-                        <button class="btn btn-go-comment">Добавить комментарий</button>
+                        <button style="margin-top: -10px;" class="btn btn-task">Добавить комментарий</button>
                     </a>
                 </div>
             </div>
 
-            <!-- Правая колонка - Комментарии -->
+
             <div class="col-6">
-                <h2 class="title_comments">Комментарии</h2>
+                <h1 class="title">Комментарии</h1>
                 {% if comments %}
                     {% for comment in comments %}
                         <div class="card-task fixed-card text-center">

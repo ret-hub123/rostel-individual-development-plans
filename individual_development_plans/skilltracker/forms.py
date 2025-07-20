@@ -50,7 +50,11 @@ class AddCommentForm(forms.ModelForm):
         fields = ['text']
 
         widgets = {
-            'text': forms.TextInput(attrs={'class': 'form-input'})
+            'text': forms.Textarea(attrs={'class': 'form-input'})
+        }
+
+        labels = {
+            'text': 'Текст сообщения'
         }
 
 

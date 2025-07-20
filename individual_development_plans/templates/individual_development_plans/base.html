@@ -43,12 +43,12 @@
         {% if user.is_authenticated %}
 
            <h5 class="d-inline-block pe-2"> {{user}} |</h5>
-
+<li class="nav-item2">
         <form method="post" action="{% url 'users:logout' %}">
             {% csrf_token %}
             <button type="submit" class="btn">Logout</button>
             </form>
-            </li>
+              </li>
         {% else %}
         <li class="nav-item2">
          <form method="post" action="{% url 'users:login' %}">
@@ -70,6 +70,13 @@
 <div class = "footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
     <div class="col-md-4 d-flex align-items-center">&copy; 2025 Система развития навыков сотрудников
     </div>
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+  <li class="ms-3 text-white">
+    <a href="https://github.com/ret-hub123/rostel-individual-development-plans">
+      <img class="footer-item" src="{% static 'individual_development_plans/image/free-icon-github-1051377.png' %}" alt="GitHub">
+    </a>
+  </li>
+    </ul>
 </div>
 
 

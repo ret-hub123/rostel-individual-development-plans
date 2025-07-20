@@ -6,17 +6,23 @@ from django.urls import reverse
 
 # Create your models here.
 
-class Tasks(models.Model):
+class DataMixin:
     status_choice = [
         ('new', 'Новая'),
         ('in_progress', 'В работе'),
         ('completed', 'Завершена')
     ]
 
+    @classmethod
+    def get_status_choices(cls):
+        return cls.status_choice
+
+class Tasks(models.Model, DataMixin):
+
     title = models.CharField(max_length=80)
     description = models.TextField(max_length=250)
     deadline = models.DateTimeField(verbose_name="Срок выполнения")
-    status = models.CharField(default='new', choices=status_choice)
+    status = models.CharField(default='new', choices=DataMixin.get_status_choices)
     progress = models.IntegerField(default=0, validators=
             [MinValueValidator(0), MaxValueValidator(100)])
 
@@ -37,7 +43,8 @@ class Tasks(models.Model):
 
 
 
-class Comments(models.Model):
+class Comments(models.Model, DataMixin):
+
     task = models.ForeignKey(Tasks, on_delete=models.PROTECT, null=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, null=True)
     text = models.TextField(max_length=250)
@@ -46,4 +53,6 @@ class Comments(models.Model):
     class Meta:
         ordering = ["-created_at"]
 
+    def exit_position(self):
+        self.progress = 'Завершена'
 

@@ -1,7 +1,7 @@
 
 .add-user{
     background-color: #efefef;
-    padding: 4rem;
+    padding: 3rem;
     max-width: 30rem;
     min-width: 25rem;
     border-radius: 50px;
@@ -45,3 +45,18 @@
 .title-reg{
     margin-bottom: 3rem;
 }
+
+.btn-task {
+    color: black;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color: white;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+  }
+
+.btn-task:hover {
+    color: white;
+    background-color: #ff6404;
+  }

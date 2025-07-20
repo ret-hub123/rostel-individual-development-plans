@@ -6,25 +6,26 @@
      <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
 
 
-<h6 class="title">
+<h1 class="title">
         {{ title }}
-    </h6>
+    </h1>
 
 
         {% if not user.is_authenticated %}
-<h2> Сначала пройдите авторизацию -> <a href="{% url 'users:login' %}">здесь</a> </h2>
+    <div class="start-mess"><h4> Для доступа к основным функциям системы необходимо определить ваши права доступа.
+                    Пожалуйста -> <a style="color:white;" href="{% url 'users:login' %}">войдите в систему,</a>  чтобы получить доступ согласно вашей роли.</h4></div>
         {% else %}
             <h2 class="title">
                 Добро пожаловать! <b>{{user.first_name}} {{user.last_name }}</b>
             </h2>
 
         {% if user.role == 'employee' %}
-            <div class="title-wrapper" style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px;">
-    <h3 style=" display: inline;">
+            <div class="title-wrapper" style=" left: -100px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+    <h4 style=" display: inline; ">
         <span class="warning-mess" style="color: red; font-weight: bold;">Внимание!</span>
         У вас подходит DeathLine по следующим задачам -
-    </h3>
-    <a href="{{ 'tasks' }}" class="btn btn-task" style="padding: 2px 12px; background-color: #ff6404;">
+    </h4>
+    <a href="{{ 'tasks' }}" class="btn btn-task" style="padding: 2px 12px;">
         Перейти к задачам
     </a>
 </div>
@@ -37,6 +38,10 @@
 
       <div class="col-md-4 mb-4">
         <div class="card-task text-center">
+            <div class="card-info  align-items-center justify-content-between p-3">
+
+            <h6 class="mb-0" style="color: #ffffff">Прогресс: {{ warning_task.progress }}%</h6>
+          </div>
 
          {% with status=warning_task.deadline|days_left %}
 <div class="card-info align-items-center justify-content-between p-3">
@@ -46,7 +51,7 @@
         {% else %}green{% endif %};">
         <h6 class="mb-0">Дедлайн: {{ warning_task.deadline|date:"Y-m-d" }}</h6>
     </div>
-    <h6 class="mb-0">Прогресс: {{ warning_task.progress }}%</h6>
+
 </div>
 {% endwith %}
 

@@ -55,7 +55,7 @@
 
 .add-task{
     background-color: #efefef;
-    padding: 4rem;
+    padding: 3rem;
     max-width: 30rem;
     min-width: 25rem;
     border-radius: 50px;
@@ -96,9 +96,8 @@
 }
 
 .title-reg{
-    margin-top: 1rem;
     margin-bottom: 3rem;
-    border-radius: 50px;
+
 }
 
 
@@ -120,7 +119,9 @@
     border: 1px solid white;
     background-color: white;
     margin-top: 2rem;
+    border: 1px solid #ddd;
   }
+
 .btn-task:hover {
     color: white;
     background-color: #ff6404;
@@ -188,3 +189,5 @@
     margin-bottom: 5rem;
 
 }
+
+
