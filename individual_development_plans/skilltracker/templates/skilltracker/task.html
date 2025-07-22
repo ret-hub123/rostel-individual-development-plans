@@ -1,5 +1,6 @@
 {% extends 'individual_development_plans/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
     <link type="text/css" href="{% static 'skilltracker/css/main.css' %}" rel="stylesheet" />
@@ -18,7 +19,8 @@
                         <h5 class="card-title" >{{ task.title }}</h5>
                         <p class="card-text">{{ task.description }}</p>
 
-                        <form class="add-user text-center" action="?form_type=task_form" method="POST" enctype="multipart/form-data">
+
+                        <form class="add-user text-center" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% for f in task_form %}
                                 <p>
@@ -28,9 +30,19 @@
                                 <div class="form-error">{{ f.errors }}</div>
 
                             {% endfor %}
-                            <a href="{{task.exit_position}}" class="btn btn-task">Завершить</a>
+
                             <button class="btn btn-task" type="submit">Изменить</button>
+
                         </form>
+                        <form method="post" action="{% url 'complete-task' task.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-task"
+                                onclick="return confirm('Вы уверены, что хотите завершить эту задачу?')">
+                            Завершить задачу
+                        </button>
+                            </form>
+
+
                     </div>
                 </div>
 

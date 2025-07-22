@@ -4,9 +4,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Case, When, Value, F
 from datetime import date, timedelta
 
@@ -84,7 +84,7 @@ class EmployeeTask(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Tasks, pk = self.kwargs['task_pk'])"""
 
-class TaskDetailUpdateView(DetailView, UpdateView):
+class TaskDetailUpdateView(UpdateView):
     pk_url_kwarg = 'task_pk'
     template_name = 'skilltracker/task.html'
     context_object_name = 'task'
@@ -140,8 +140,14 @@ class AddTask(PermissionRequiredMixin, CreateView):
     permission_required = 'skilltracker.add_task'
 
 
+class CompleteTaskView(DeleteView):
+    model = Tasks
+    success_url = reverse_lazy('tasks')
 
-
-
-
+    def form_valid(self, form):
+        task = self.get_object()
+        task.status = 'completed'
+        task.progress = 100
+        task.save()
+        return redirect(self.get_success_url())
 

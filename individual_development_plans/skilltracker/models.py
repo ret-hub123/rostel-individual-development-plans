@@ -27,7 +27,7 @@ class Tasks(models.Model, DataMixin):
     title = models.CharField(max_length=80)
     description = models.TextField(max_length=250)
     deadline = models.DateTimeField(verbose_name="Срок выполнения")
-    status = models.CharField(default='new', choices=DataMixin.get_status_choices)
+    status = models.CharField(max_length=50, default='new', choices=DataMixin.get_status_choices)
     progress = models.IntegerField(default=0, validators=
             [MinValueValidator(0), MaxValueValidator(100)])
 
@@ -44,12 +44,12 @@ class Tasks(models.Model, DataMixin):
     def add_comment(self):
         return reverse('add-comment', kwargs={'task_pk': self.id})
 
-    def exit_position(self):
-        self.status = 'Завершена'
-        self.progress = 100
-        self.save()
-        return reverse('main')
-
+    """def end_position(self):
+        if self.status != 'Завершена':
+            self.status = 'Завершена'
+            self.progress = 100
+            self.save()
+        return reverse('main')"""
 
 
 class Comments(models.Model, DataMixin):

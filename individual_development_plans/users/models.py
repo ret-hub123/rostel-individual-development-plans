@@ -10,7 +10,7 @@ class User(AbstractUser):
         ('director', 'Director'),
         ('employee', 'Employee'),
     ]
-    role = models.CharField(choices=ROLE_CHOICES, default='director')
+    role = models.CharField(max_length=50, choices=ROLE_CHOICES, default='director')
     photo_profile = models.ImageField(upload_to = 'image_for_users/', default = None, blank = True, null = True)
 
     def __str__(self):
