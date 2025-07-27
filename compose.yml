@@ -1,4 +1,43 @@
 services:
+  nginx:
+    image: nginx
+    container_name: nginx-server
+    restart: always
+    networks:
+      - dbnet
+    expose:
+      - 8088
+    ports:
+      - "80:8088"
+    volumes:
+      - ./individual_development_plans/static:/app/www/individual_development_plans/static
+      - ./individual_development_plans/media:/app/www/individual_development_plans/media
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - postgres
+
+
+
+  skilltracker:
+    build: ./individual_development_plans
+    image: individual_development_plans
+    container_name: individual_development_plans
+    restart: always
+
+    command: "gunicorn -c gunicorn.py individual_development_plans.wsgi"
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    links:
+      - "postgres:psgr"
+    networks:
+      - dbnet
+    volumes:
+      - ./individual_development_plans:/app/www/individual_development_plans
+    depends_on:
+      - postgres
+
   adminer:
     image: adminer
     container_name: adminer
@@ -11,23 +50,25 @@ services:
     depends_on:
       - postgres
 
-    postgres:
-      image: postgres:17-alpine
-      container_name: psgr
-      volumes:
-        - postgres-data:/var/lib/postgresql/data
-      environment:
-        - POSTGRES_DB=${DATABASE_NAME}
-        - POSTGRES_USER=${DATABASE_USERNAME}
-        - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      networks:
-        - dbnet
 
-  networks:
+  postgres:
+    image: postgres:17-alpine
+    container_name: psgr
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - dbnet
+
+
+networks:
     dbnet:
       driver: bridge
 
-  volumes:
+volumes:
     postgres-data:
 
 

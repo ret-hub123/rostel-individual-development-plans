@@ -1,10 +1,12 @@
-FROM python:3.13.5-slim
+FROM python:3.11-slim
 RUN groupadd -r groupdjango && useradd -r -g groupdjango userdj
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+
 WORKDIR /app/www/sitewomen
 COPY requirements.txt .
 RUN pip install -r requirements.txt

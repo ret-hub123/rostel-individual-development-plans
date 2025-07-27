@@ -1,0 +1,62 @@
+
+.add-user{
+    background-color: #efefef;
+    padding: 3rem;
+    max-width: 30rem;
+    min-width: 25rem;
+    border-radius: 50px;
+    align-items: center;
+}
+
+
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+
+.form-input,
+.form-input-role,
+.form-input-pass,
+.form-input-photo{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-add-user{
+    margin-top: 3rem;
+    width: 15rem;
+    min-height: 3rem;
+    background-color: #ff6404;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+}
+
+.button-add-user:hover{
+    color: white;
+}
+.title-reg{
+    margin-bottom: 3rem;
+}
+
+.btn-task {
+    color: black;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color: white;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+  }
+
+.btn-task:hover {
+    color: white;
+    background-color: #ff6404;
+  }

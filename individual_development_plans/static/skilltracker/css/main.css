@@ -1,0 +1,193 @@
+
+
+.card-info{
+    background-color: black;
+    width: calc(100% + 4rem); /* Растягиваем на 2rem с каждой стороны */
+    margin: -2rem -2rem 1rem -2rem; /* Отрицательные отступы для выхода за границы */
+    padding: 1rem 2rem;
+
+}
+
+.current{
+    min-height: 25rem;
+    max-width: 30rem;
+    border: 2px solid #016499;
+}
+
+
+.card-text{
+    margin-bottom: 1rem;
+}
+
+.btn-cart{
+    max-width: 13rem;
+    min-height: 3rem;
+    margin-top: 1rem;
+    background-color: #ff6404;
+    border-radius: 50px;
+    margin: 1rem;
+}
+
+.btn-cart:hover{
+    background-color: #ff6404;
+    color: white;
+}
+
+.photo-employee{
+    width: 12rem;
+    height: 11rem;
+    margin: 1rem;
+    border: 1px dashed black;
+
+}
+
+
+.card {
+    background-color: #efefef;
+    min-height: 25rem;
+    min-width: 12rem;
+    max-width: 17rem;
+    align-items: center;
+    border-radius: 35px;
+    padding: 10px;
+}
+
+
+.add-task{
+    background-color: #efefef;
+    padding: 3rem;
+    max-width: 30rem;
+    min-width: 25rem;
+    border-radius: 50px;
+    align-items: center;
+}
+
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+    border-radius: 50px;
+}
+
+.form-input-deadline,
+.form-input-employee,
+.form-input,
+.form-input-area{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-add-user{
+    margin-top: 3rem;
+    width: 15rem;
+    min-height: 3rem;
+    background-color: #ff6404;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+}
+.button-add-user:hover{
+    color: white;
+}
+
+.title-reg{
+    margin-bottom: 3rem;
+
+}
+
+
+
+.card-task {
+    border-radius: 30px;
+    overflow: hidden;
+    background-color:#efefef;
+    max-width: 25rem;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+
+.btn-task {
+    color: black;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color: white;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+  }
+
+.btn-task:hover {
+    color: white;
+    background-color: #ff6404;
+  }
+
+
+.form-input,
+.form-input-role,
+.form-input-pass,
+.form-input-photo{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+.form-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.card-title{
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text{
+    margin-bottom: 2rem;
+
+}
+
+.btn-go-comment{
+    background-color: #ff6404;
+    height: 3rem;
+    width: 14rem;
+    color: black;
+    border-radius: 50px;
+}
+
+.btn-go-comment:hover{
+    background-color: #ff6404;
+    color: white;
+}
+
+.warning-mess{
+    color: red;
+    margin-top: 10rem;
+
+}
+
+.deadline-wrapper{
+    padding: 8px 16px;
+    border-radius: 16px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-wrapper{
+    margin-bottom: 5rem;
+
+}
+
+
